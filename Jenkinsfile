@@ -34,7 +34,7 @@ pipeline {
         steps{
             sh '''
             docker pull $registry:$BUILD_NUMBER
-            kubectl create deployment nginx --image=$registry:$BUILD_NUMBER  --port=80
+            kubectl run --generator=run-pod/v1 nginx  --image=$registry:$BUILD_NUMBER  --port=80
             kubectl get pods
             kubectl port-forward  nginx 8000:80
             '''
