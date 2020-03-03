@@ -34,8 +34,9 @@ pipeline {
         steps{
             sh '''
             docker pull $registry:$BUILD_NUMBER
-            kubectl run  app  --image=$registry:$BUILD_NUMBER  --port=80
-            kubectl port-forward  app 8000:80
+            kubectl create deployment nginx --image=$registry:$BUILD_NUMBER 
+            podname="$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')"
+            kubectl port-forward  "$podname" 8000:80
             '''
         }
     }
