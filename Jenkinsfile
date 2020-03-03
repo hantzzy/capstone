@@ -34,7 +34,7 @@ pipeline {
         steps{
             sh '''
             docker pull $registry:$BUILD_NUMBER
-            kubectl run --generator=run-pod/v1 app  --image=$registry:$BUILD_NUMBER  --port=80
+            kubectl run  app  --image=$registry:$BUILD_NUMBER  --port=80
             kubectl port-forward  app 8000:80
             '''
         }
