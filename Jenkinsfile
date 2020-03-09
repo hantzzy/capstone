@@ -33,14 +33,15 @@ pipeline {
 
     stage('Deploy to kubernetes cluster'){
         steps{
-            sh '''
-            
-            kubectl create deployment nginx --image=$registry:$BUILD_NUMBER 
-            
-            '''
+            sh'kubectl create deployment nginx --image=$registry:$BUILD_NUMBER'
             
         }
     }
-
+    stage('NGINX container available to the network'){
+        steps{
+            sh'kubectl create service nodeport nginx --tcp=80:80'
+            
+        }
+    }
   }
 }
