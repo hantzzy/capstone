@@ -36,7 +36,7 @@ pipeline {
             sh '''
             docker pull $registry:$BUILD_NUMBER
             kubectl create deployment nginx --image=$registry:$BUILD_NUMBER 
-            sudo kubectl create service nodeport nginx --tcp=80:80
+            kubectl create service nodeport nginx --tcp=80:80
             '''
             
         }
