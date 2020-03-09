@@ -40,10 +40,10 @@ pipeline {
             sh'rm pods.yml'
           script{
             try{
-              sh'kubectl apply -f .'
+              sh'kubectl apply -f nginx-app-pod.yml'
               
             }catch(error){
-              sh'kubectl create -f .'
+              sh'kubectl create -f nginx-app-pod.yml'
             }
           }
         }
