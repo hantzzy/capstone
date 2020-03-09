@@ -27,7 +27,7 @@ pipeline {
 
     stage('Deploy to kubernetes cluster'){
         steps{
-            sh'kubectl create deployment nginx --image=hantzy/capstone:29'
+            sh'kubectl create deployment nginx --image=hantzy/capstone:35'
             
         }
     }
