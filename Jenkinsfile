@@ -38,7 +38,7 @@ pipeline {
             sh'pwd'
             sh'cat nginx-app-pod.yml'
             sh'echo "login and copy into admin and deploy"'
-            sh 'scp -o StrictHostKeyChecking=no services.yml nginx-app-pod.yml admin@api.hantzy.com:/home/admin/k8sapp'
+            sh 'scp -o StrictHostKeyChecking=no services.yml nginx-app-pod.yml admin@api.hantzy.com:/home/admin/'
 
           script{
             try{
