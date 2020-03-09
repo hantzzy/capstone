@@ -24,20 +24,20 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-      }
-    }
 
     stage('Deploy to kubernetes cluster'){
         steps{
-            sh '''
-            docker pull $registry:$BUILD_NUMBER
-            kubectl run --generator=run-pod/v1 nginx  --image=$registry:$BUILD_NUMBER  --port=80
-            kubectl get pods
-            kubectl port-forward  nginx 8000:80
-            '''
+            sh'chmod +x edittag.sh'
+            sh'./edittag.sh $BUILD_NUMBER'
+            sh'kubectl create deployment nginx --image=$registry:$BUILD_NUMBER'
+          script{
+            try{
+              sh'kubectl apply -f .'
+              
+            }catch(error){
+              sh'kubectl create -f .'
+            }
+          }
         }
     }
 
