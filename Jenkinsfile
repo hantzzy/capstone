@@ -34,6 +34,7 @@ pipeline {
         steps{
             sh'chmod +x edittag.sh'
             sh'./edittag.sh $BUILD_NUMBER'
+            sh'pwd'
           script{
             try{
               sh'kubectl apply -f .'
