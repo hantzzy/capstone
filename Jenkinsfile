@@ -4,14 +4,14 @@ pipeline {
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
+
+  stages {
   agent any
   stage('Cloning Git') {
-  steps {
-    git 'https://github.com/hantzzy/capstone.git'
-  }
-}
-  stages {
-
+   steps {
+      git 'https://github.com/hantzzy/capstone.git'
+     }
+   }
     stage('Building image') {
       steps{
         script {
