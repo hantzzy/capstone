@@ -27,7 +27,7 @@ pipeline {
 
     stage('Deploy to kubernetes cluster'){
         steps{
-            sh'kubectl create deployment nginx --image=hantzy/capstone:35'
+            sh'kubectl create deployment nginx --image=$registry:$BUILD_NUMBER'
             
         }
     }
