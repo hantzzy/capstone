@@ -43,7 +43,7 @@ pipeline {
               sh'kubectl apply -f nginx-app-pod.yml -v=8'
               
             }catch(error){
-              sh'sudo kubectl create -f nginx-app-pod.yml -v=8'
+              sh'kubectl create -f nginx-app-pod.yml -v=8'
             }
           }
         }
