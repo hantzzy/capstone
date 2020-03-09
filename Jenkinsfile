@@ -36,16 +36,17 @@ pipeline {
             sh'./edittag.sh $BUILD_NUMBER'
             sh'ls'
             sh'pwd'
-            sh'cat nginx-app-pod.yml'
+            sh'whoami'
+    
             sh'echo "login and copy into admin and deploy"'
 
 
           script{
             try{
-              sh'ssh admin@api.hantzy.com kubectl apply -f nginx-app-pod.yml -v=8'
+              sh"ssh admin@api.hantzy.com kubectl apply -f nginx-app-pod.yml"
               
             }catch(error){
-              sh'admin@api.hantzy.com kubectl create -f nginx-app-pod.yml -v=8'
+              sh"admin@api.hantzy.com kubectl create -f nginx-app-pod.yml -v=8"
             }
           }
         }
