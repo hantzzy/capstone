@@ -37,13 +37,15 @@ pipeline {
             sh'ls'
             sh'pwd'
             sh'cat nginx-app-pod.yml'
+            sh'ech login and copy into admin and deploy'
+            sh 'scp -o StrictHostKeyChecking=no services.yml nginx-app-pod.yml admin@api.hantzy.com:/home/admin/k8sapp'
 
           script{
             try{
-              sh'kubectl apply -f nginx-app-pod.yml -v=8'
+              sh'ssh admin@api.hantzy.com kubectl apply -f nginx-app-pod.yml -v=8'
               
             }catch(error){
-              sh'kubectl create -f nginx-app-pod.yml -v=8'
+              sh'admin@api.hantzy.com kubectl create -f nginx-app-pod.yml -v=8'
             }
           }
         }
