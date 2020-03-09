@@ -40,10 +40,12 @@ pipeline {
 
           script{
             try{
-              sh'sudo kubectl apply -f nginx-app-pod.yml -v=8'
+              sh'chmod +x apply.sh'
+              sh'./apply.sh'
               
             }catch(error){
-              sh'sudo kubectl create -f nginx-app-pod.yml -v=8'
+              sh'chmod +x create.sh'
+              sh'./create.sh'
             }
           }
         }
