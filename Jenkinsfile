@@ -37,17 +37,18 @@ pipeline {
             sh'ls'
             sh'pwd'
             sh'whoami'
-    
-            sh'echo "login and copy into admin and deploy"'
-
+            sh ''
+            sshagent(['kops-server']) {
+                sh"scp -o StrictHostKeyChecking=no services.yml nginx-app-pod.yml ubuntu@ec2-54-173-94-217.compute-1.amazonaws.com:/home/ubuntu"
 
           script{
             try{
-              sh"kubectl apply -f nginx-app-pod.yml"
+              sh"ssh ubuntu@ec2-54-173-94-217.compute-1.amazonaws.com kubectl apply -f ."
               
             }catch(error){
-              sh"kubectl create -f nginx-app-pod.yml -v=8"
+              sh"ssh ubuntu@ec2-54-173-94-217.compute-1.amazonaws.com kubectl create -f ."
             }
+          }
           }
         }
     }
