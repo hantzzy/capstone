@@ -34,7 +34,7 @@ pipeline {
     stage('Deploy to kubernetes cluster'){
         steps{
             sh '''
-            docker pull $registry:$BUILD_NUMBER
+            
             kubectl create deployment nginx --image=$registry:$BUILD_NUMBER 
             
             '''
