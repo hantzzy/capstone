@@ -36,9 +36,10 @@ pipeline {
             sh '''
             docker pull $registry:$BUILD_NUMBER
             kubectl create deployment nginx --image=$registry:$BUILD_NUMBER 
-            podname="$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')"
-            kubectl port-forward  "$podname" 8000:80
             '''
+            sh 'export podname="$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')"'
+            sh 'kubectl port-forward  "$podname" 8000:80'
+            
         }
     }
 
