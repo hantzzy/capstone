@@ -36,14 +36,13 @@ pipeline {
             sh'./edittag.sh $BUILD_NUMBER'
             sh'ls'
             sh'pwd'
-            sh'rm nginx-deploy.yml'
             sh'rm pods.yml'
           script{
             try{
-              sh'kubectl apply -f nginx-app-pod.yml'
+              sh'kubectl apply -f nginx-app-pod.yml -v=8'
               
             }catch(error){
-              sh'kubectl create -f nginx-app-pod.yml'
+              sh'kubectl create -f nginx-app-pod.yml -v=8'
             }
           }
         }
