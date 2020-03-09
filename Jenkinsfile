@@ -36,6 +36,8 @@ pipeline {
             sh'./edittag.sh $BUILD_NUMBER'
             sh'ls'
             sh'pwd'
+            sh'rm nginx-deploy.yml'
+            sh'rm pods.yml'
           script{
             try{
               sh'kubectl apply -f .'
