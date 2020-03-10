@@ -12,6 +12,11 @@ pipeline {
       git 'https://github.com/hantzzy/capstone.git'
      }
    }
+        stage('Lint HTML'){
+        steps{
+            sh 'tidy -q -e *.html'
+        }
+    }
     stage('Building image') {
       steps{
         script {
