@@ -35,8 +35,15 @@ Add the following lines, using the same bucket name in step 4 and smae hosted Zo
 ```
 export  KOPS_CLUSTER_NAME="hantzy.com"
 export KOPS_STATE_STORE="s3://hantz.k8s"
-```
 
+```
+or using echo
+
+```
+sudo echo "export  KOPS_CLUSTER_NAME=hantzy.com" >>~/.bashrc
+sudo echo "export  KOPS_STATE_STORE=s3://hantz.k8s" >>~/.bashrc
+
+```
 ### 7- Create the necessary key pair using ssh-Keygen or AWS CLI to ssh into Kubernetes cluster
 ssh-Keygen
 ```
