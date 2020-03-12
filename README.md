@@ -1,5 +1,6 @@
 # Deployed Kubenete on AWS using Kops
 Udacity capstone - Jenkin was deployed on it's onw AWS instance with docker install and the kubenernete deployed with kops.
+Jenkin workflow deploy the static html page into NGINX behind an ELB. 
 
 ### 1- Create Ubuntu instance and attach I am role to the instance
 - Needs permission to the following: EC2, S3,  VPC and Route 53
