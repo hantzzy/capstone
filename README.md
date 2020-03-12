@@ -121,3 +121,4 @@ echo "update cluster"
 kops update cluster --yes
 
 ```
+This can also be deployed using cloudformation, which copy the script above at boot from an open s3 bucket and run it. 
