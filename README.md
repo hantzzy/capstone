@@ -50,7 +50,19 @@ chmod 600 ~/.ssh/key-name.pem
 ```
 
 ### 8- Deploy K8s Cluster
+```
 
+kops create cluster \
+--state={KOPS_STATE_STORE} \
+--node-count=1 \
+--master-size=t2.micro \
+--kubernetes-version=v1.17.3 \
+--node-size=t2.micro \
+--zones=us-east-1a,us-east-1b \
+--name=${KOPS_CLUSTER_NAME} \
+--dns public \
+--master-count 1
+```
 ```
 kops update cluster --yes
 ```
