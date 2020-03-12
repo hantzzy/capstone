@@ -1,4 +1,4 @@
-# Deployed Kubenete on AWS using Kops
+# Deploy Kubenete on AWS using Kops
 Udacity capstone - Jenkin was deployed on it's onw AWS instance with docker install and the kubenernete deployed with kops.
 Jenkin workflow deploy the static html page into NGINX behind an ELB as a rolling deployment 
 
